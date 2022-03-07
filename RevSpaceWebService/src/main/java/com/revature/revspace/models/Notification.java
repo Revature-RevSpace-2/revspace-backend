@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -21,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name="notifications")
-public class Notifications {
+public class Notification {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,30 +35,42 @@ public class Notifications {
 	@Column(name = "dateAndTime")
 	private LocalDate dateAndTime;
 	
-	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name="receiver")
+	@Column(name = "isViewed")
+	private boolean isViewed;
+	
+	@OneToOne(cascade=CascadeType.MERGE, fetch = FetchType.EAGER)
+	@JoinColumn(name="post_id")
 	@JsonManagedReference
-	private User userReceive;
+	private Post post;
+	
+	@OneToOne(cascade=CascadeType.MERGE, fetch = FetchType.EAGER)
+	@JoinColumn(name="user_id")
+	@JsonManagedReference
+	private User sender;
 
 
 	
-	public Notifications() {
+	public Notification() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Notifications(int noti_id, String message, LocalDate dateAndTime, User userReceive) {
+	public Notification(int noti_id, String message, LocalDate dateAndTime,boolean isViewed,Post post, User sender) {
 		super();
 		this.noti_id = noti_id;
 		this.message = message;
 		this.dateAndTime = dateAndTime;
-		this.userReceive = userReceive;
+		this.isViewed = isViewed;
+		this.post = post;
+		this.sender = sender;
 	}
 
-	public Notifications(String message, LocalDate dateAndTime, User userReceive) {
+	public Notification(String message, LocalDate dateAndTime, boolean isViewed,Post post, User sender) {
 		super();
 		this.message = message;
 		this.dateAndTime = dateAndTime;
-		this.userReceive = userReceive;
+		this.isViewed = isViewed;
+		this.post = post;
+		this.sender = sender;
 	}
 
 	public String getMessage() {
@@ -76,22 +89,41 @@ public class Notifications {
 		this.dateAndTime = dateAndTime;
 	}
 
+	
 
-	public User getUserReceive() {
-		return userReceive;
+	public boolean isViewed() {
+		return isViewed;
 	}
 
-	public void setUserReceive(User userReceive) {
-		this.userReceive = userReceive;
+	public void setViewed(boolean isViewed) {
+		this.isViewed = isViewed;
+	}
+
+	public User getSender() {
+		return this.sender;
+	}
+
+	public void setSender(User sender) {
+		this.sender = sender;
 	}
 
 	public int getNoti_id() {
 		return noti_id;
 	}
 
+	
+	
+	public Post getPost() {
+		return post;
+	}
+
+	public void setPost(Post post) {
+		this.post = post;
+	}
+
 	@Override
 	public String toString() {
-		return "NotificationsModel [noti_id=" + noti_id + ", message=" + message + ", dateAndTime=" + dateAndTime  + ", userReceive=" + userReceive + "]";
+		return "NotificationsModel [noti_id=" + noti_id + ", message=" + message + ", dateAndTime=" + dateAndTime  + ", post=" + post + ", sender=" + sender + "]";
 	}
 	
 }

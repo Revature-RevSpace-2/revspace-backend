@@ -55,9 +55,9 @@ public class User
 	@Column(name="aboutme", length=1000, nullable = false)
 	private String aboutMe;
 	
-	@OneToMany(mappedBy="userReceive", fetch=FetchType.EAGER)
-	@JsonBackReference
-	private List<Notifications> notifications;
+//	@OneToMany(mappedBy="userReceive", fetch=FetchType.EAGER)
+//	@JsonBackReference
+//	private List<Notifications> notifications;
 
 	public User()
 	{
