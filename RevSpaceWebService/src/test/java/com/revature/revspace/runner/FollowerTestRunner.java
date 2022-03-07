@@ -7,8 +7,8 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		features = {"feature"},
-		glue = {"com.example.gluecode"}
+		features = {"feature/UserLogin.feature"},
+		glue = {"com.revature.revspace.gluecode"}
 		)
 public class FollowerTestRunner {
 
