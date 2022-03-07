@@ -50,7 +50,7 @@ public class LikeController {
     public Like addLike(@RequestBody Like like)
     {
     	
-    	Notification notification = new Notification("Like", LocalDate.now(),false, like.getPostId(),like.getUserId());
+    	Notification notification = new Notification("Like", LocalDate.now(),false, like.getPostId());
     	nRepo.save(notification);
         return ls.add(like);
     }

@@ -43,10 +43,6 @@ public class Notification {
 	@JsonManagedReference
 	private Post post;
 	
-	@OneToOne(cascade=CascadeType.MERGE, fetch = FetchType.EAGER)
-	@JoinColumn(name="user_id")
-	@JsonManagedReference
-	private User sender;
 
 
 	
@@ -54,23 +50,21 @@ public class Notification {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Notification(int noti_id, String message, LocalDate dateAndTime,boolean isViewed,Post post, User sender) {
+	public Notification(int noti_id, String message, LocalDate dateAndTime,boolean isViewed,Post post) {
 		super();
 		this.noti_id = noti_id;
 		this.message = message;
 		this.dateAndTime = dateAndTime;
 		this.isViewed = isViewed;
 		this.post = post;
-		this.sender = sender;
 	}
 
-	public Notification(String message, LocalDate dateAndTime, boolean isViewed,Post post, User sender) {
+	public Notification(String message, LocalDate dateAndTime, boolean isViewed,Post post) {
 		super();
 		this.message = message;
 		this.dateAndTime = dateAndTime;
 		this.isViewed = isViewed;
 		this.post = post;
-		this.sender = sender;
 	}
 
 	public String getMessage() {
@@ -99,13 +93,7 @@ public class Notification {
 		this.isViewed = isViewed;
 	}
 
-	public User getSender() {
-		return this.sender;
-	}
-
-	public void setSender(User sender) {
-		this.sender = sender;
-	}
+	
 
 	public int getNoti_id() {
 		return noti_id;
@@ -123,7 +111,7 @@ public class Notification {
 
 	@Override
 	public String toString() {
-		return "NotificationsModel [noti_id=" + noti_id + ", message=" + message + ", dateAndTime=" + dateAndTime  + ", post=" + post + ", sender=" + sender + "]";
+		return "NotificationsModel [noti_id=" + noti_id + ", message=" + message + ", dateAndTime=" + dateAndTime  + ", post=" + post +  "]";
 	}
 	
 }
