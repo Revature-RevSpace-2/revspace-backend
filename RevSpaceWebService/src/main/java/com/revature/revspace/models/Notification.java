@@ -107,7 +107,10 @@ public class Notification {
 
 	@Override
 	public String toString() {
-		return "NotificationsModel [notiId=" + notiId + ", message=" + message + ", dateAndTime=" + dateAndTime  + ", post=" + post +  "]";
+		return "Notification [notiId=" + notiId + ", message=" + message + ", dateAndTime=" + dateAndTime
+				+ ", isViewed=" + isViewed + ", post=" + post + "]";
 	}
+
+	
 	
 }

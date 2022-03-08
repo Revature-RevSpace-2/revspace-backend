@@ -23,13 +23,11 @@ public class NotificationController {
 		List<Notification> notificationById = new ArrayList<>();
 		for(Notification noti: notificationAll) {
 			int createrId = noti.getPost().getCreatorId().getUserId();
-			System.out.println("CreaterId: "+createrId);
 			if(createrId == Integer.parseInt(id)) {
 				notificationById.add(noti);
 			}
 		}
 		
-		System.out.println("Notifications: "+notificationById);
 		return notificationById;
 	}
 	
