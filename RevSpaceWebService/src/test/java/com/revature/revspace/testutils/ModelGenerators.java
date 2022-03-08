@@ -103,14 +103,15 @@ public class ModelGenerators
 		int day = ran.nextInt(1,28);
 		String message = makeRandomAlphaString(2,20);
 		LocalDate dateAndTime = LocalDate.of(year,month,day);
+//		int userId = ran.nextInt(20);
 		
 //		LocalDate date = LocalDate.of(2017, 1, 13);
 //		date = date.atTime(RANDOM.nextInt() % 1000)*24*60*60*1000;
 		
-		User user = makeRandomUser();
-		int userReceive = user.getUserId();
+//		User user = makeRandomUser(userId);
+//		int userReceive = user.getUserId();
 		
-//		public Notifications(int notiId, String message, LocalDate dateAndTime, User userReceive)
-		return new Notifications(message, dateAndTime, userReceive);
+
+		return new Notifications(message, dateAndTime, 1);
 	}
 }
