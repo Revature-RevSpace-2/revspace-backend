@@ -1,7 +1,6 @@
 package com.revature.revspace.models;
 
 import java.time.LocalDate;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,14 +10,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 @Entity
 @Table(name="notifications")
@@ -26,8 +22,8 @@ public class Notification {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "noti_id", updatable = false)
-	private int noti_id;
+    @Column(name = "notiId", updatable = false)
+	private int notiId;
 	
 	@Column(name = "message")
 	private String message;
@@ -50,9 +46,9 @@ public class Notification {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Notification(int noti_id, String message, LocalDate dateAndTime,boolean isViewed,Post post) {
+	public Notification(int notiId, String message, LocalDate dateAndTime,boolean isViewed,Post post) {
 		super();
-		this.noti_id = noti_id;
+		this.notiId = notiId;
 		this.message = message;
 		this.dateAndTime = dateAndTime;
 		this.isViewed = isViewed;
@@ -95,8 +91,8 @@ public class Notification {
 
 	
 
-	public int getNoti_id() {
-		return noti_id;
+	public int getNotiId() {
+		return notiId;
 	}
 
 	
@@ -111,7 +107,7 @@ public class Notification {
 
 	@Override
 	public String toString() {
-		return "NotificationsModel [noti_id=" + noti_id + ", message=" + message + ", dateAndTime=" + dateAndTime  + ", post=" + post +  "]";
+		return "NotificationsModel [notiId=" + notiId + ", message=" + message + ", dateAndTime=" + dateAndTime  + ", post=" + post +  "]";
 	}
 	
 }

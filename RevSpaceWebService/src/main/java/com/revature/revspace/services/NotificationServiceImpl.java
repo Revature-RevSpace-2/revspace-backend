@@ -20,7 +20,7 @@ public class NotificationServiceImpl implements NotificationService{
 
 	@Override
 	public Integer getIDFor(Notification value) {
-		return value.getNoti_id();
+		return value.getNotiId();
 	}
 
 
