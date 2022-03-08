@@ -12,3 +12,4 @@ public interface NotificationsRepo extends JpaRepository<Notifications, Integer>
 	public Notifications getNotificationBynotiId (String notiId);
 	public List<Notifications> findAllNotificationsByUserReceive (int userId, Sort sort);
 }
+

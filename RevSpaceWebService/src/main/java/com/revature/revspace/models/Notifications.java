@@ -12,12 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name="notifications")
@@ -34,10 +30,8 @@ public class Notifications {
 	@Column(name = "dateAndTime")
 	private LocalDate dateAndTime;
 	
-	@ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
-	@JoinColumn(name="receiver")
-	@JsonManagedReference
-	private User userReceive;
+	@Column(name="receiver")
+	private int userReceive;
 
 
 	
@@ -45,7 +39,7 @@ public class Notifications {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Notifications(int notiId, String message, LocalDate dateAndTime, User userReceive) {
+	public Notifications(int notiId, String message, LocalDate dateAndTime, int userReceive) {
 		super();
 		this.notiId = notiId;
 		this.message = message;
@@ -53,7 +47,7 @@ public class Notifications {
 		this.userReceive = userReceive;
 	}
 
-	public Notifications(String message, LocalDate dateAndTime, User userReceive) {
+	public Notifications(String message, LocalDate dateAndTime, int userReceive) {
 		super();
 		this.message = message;
 		this.dateAndTime = dateAndTime;
@@ -77,11 +71,11 @@ public class Notifications {
 	}
 
 
-	public User getUserReceive() {
+	public int getUserReceive() {
 		return userReceive;
 	}
 
-	public void setUserReceive(User userReceive) {
+	public void setUserReceive(int userReceive) {
 		this.userReceive = userReceive;
 	}
 
