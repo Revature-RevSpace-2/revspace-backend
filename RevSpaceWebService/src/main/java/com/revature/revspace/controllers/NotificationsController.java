@@ -1,10 +1,15 @@
 package com.revature.revspace.controllers;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
+
+import org.springframework.http.HttpStatus;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -12,8 +17,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,13 +28,10 @@ import com.revature.revspace.models.Notifications;
 import com.revature.revspace.services.NotificationService;
 import com.revature.revspace.services.UserService;
 
-
 @RestController
-@RequestMapping(value="/notifications")
-@CrossOrigin(origins="*")
+@CrossOrigin(origins = "*")
 public class NotificationsController {
-	
-	
+
 	private NotificationService nServ;
 	private UserService uServ;
 
@@ -84,7 +88,7 @@ public class NotificationsController {
 
 	
 	@DeleteMapping("/notifications/{notiId}")
-	public ResponseEntity<Notifications> deleteNotification(@PathVariable("notId") String notiId) {
+	public ResponseEntity<Notifications> deleteNotification(@PathVariable("notId") int notiId) {
 		Optional<Notifications> notiOpt = Optional.ofNullable(nServ.getNotificationById(notiId));
 		if (notiOpt.isPresent()) {
 			nServ.deleteNotification(notiOpt.get());

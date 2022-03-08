@@ -107,7 +107,8 @@ public class ModelGenerators
 //		LocalDate date = LocalDate.of(2017, 1, 13);
 //		date = date.atTime(RANDOM.nextInt() % 1000)*24*60*60*1000;
 		
-		User userReceive = makeRandomUser();
+		User user = makeRandomUser();
+		int userReceive = user.getUserId();
 		
 //		public Notifications(int notiId, String message, LocalDate dateAndTime, User userReceive)
 		return new Notifications(message, dateAndTime, userReceive);

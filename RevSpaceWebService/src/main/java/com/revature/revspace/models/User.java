@@ -10,13 +10,20 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.revature.revspace.util.UserSerializer;
+
 
 @Entity
 @Table(name="users")
+@JsonSerialize(using = UserSerializer.class)
 public class User
 {
 	@Id
@@ -53,11 +60,34 @@ public class User
 	
 	@OneToMany(mappedBy="userReceive", fetch=FetchType.EAGER)
 	@JsonBackReference
-	private List<Notifications> nList;
+	private List<Notifications> notifications;
+	
+	@ManyToMany
+    @JoinTable(name = "followers", joinColumns = @JoinColumn(name = "followerId"), inverseJoinColumns = @JoinColumn(name = "userId"))
+    private List<User> followers;
+    
+    @ManyToMany
+    @JoinTable(name = "followers", joinColumns = @JoinColumn(name = "userId"), inverseJoinColumns = @JoinColumn(name = "followerId"))
+    private List<User> following;
 
 	public User()
 	{
 		this("", "", "", null, null, "", "", "", "");
+	}
+	
+	public User(String email, String firstName, String lastName, Long birthday, Long revatureJoinDate, String githubUsername, String title, String location, String aboutMe, List<User> followers, List<User> following)
+	{
+		this.email = email;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.birthday = birthday;
+		this.revatureJoinDate = revatureJoinDate;
+		this.githubUsername = githubUsername;
+		this.title = title;
+		this.location = location;
+		this.aboutMe = aboutMe;
+		this.followers = followers;
+		this.following = following;
 	}
 
 	public User(String email, String firstName, String lastName, Long birthday, Long revatureJoinDate, String githubUsername, String title, String location, String aboutMe)
@@ -74,6 +104,8 @@ public class User
 
 	}
 
+
+	
 	public User(int userId, String email, String firstName, String lastName, Long birthday, Long revatureJoinDate, String githubUsername, String title, String location, String aboutMe)
 	{
 		this.userId = userId;
@@ -86,22 +118,6 @@ public class User
 		this.title = title;
 		this.location = location;
 		this.aboutMe = aboutMe;
-	
-	}
-	
-	public User(int userId, String email, String firstName, String lastName, Long birthday, Long revatureJoinDate, String githubUsername, String title, String location, String aboutMe, List<Notifications> nList)
-	{
-		this.userId = userId;
-		this.email = email;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.birthday = birthday;
-		this.revatureJoinDate = revatureJoinDate;
-		this.githubUsername = githubUsername;
-		this.title = title;
-		this.location = location;
-		this.aboutMe = aboutMe;
-		this.nList = nList;
 	}
 
 	public int getUserId()
@@ -204,9 +220,20 @@ public class User
 		this.aboutMe = aboutMe;
 	}
 	
-	public List<Notifications> getList() {
-		return nList;
+
+	public List<User> getFollowers() {
+		return followers;
 	}
+
+	public List<User> getFollowing() {
+		return following;
+	}
+	
+	public void setFollowers(List<User> followers) {
+		this.followers = followers;
+	}
+	
+
 
 	@Override
 	public boolean equals(Object o)
@@ -224,19 +251,13 @@ public class User
 	}
 
 	@Override
-	public String toString()
-	{
-		return "User{" +
-				"userId=" + userId +
-				", email='" + email + '\'' +
-				", firstName='" + firstName + '\'' +
-				", lastName='" + lastName + '\'' +
-				", birthday=" + birthday +
-				", revatureJoinDate=" + revatureJoinDate +
-				", githubUsername='" + githubUsername + '\'' +
-				", title='" + title + '\'' +
-				", location='" + location + '\'' +
-				", aboutMe='" + aboutMe + '\'' +
-				'}';
-	}
+	public String toString() {
+		return "User [userId=" + userId + ", email=" + email + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", birthday=" + birthday + ", revatureJoinDate=" + revatureJoinDate + ", githubUsername="
+				+ githubUsername + ", title=" + title + ", location=" + location + ", aboutMe=" + aboutMe
+				+ ", followers=" + followers + ", following=" + following + "]";
+	}	
+	
 }
+
+
