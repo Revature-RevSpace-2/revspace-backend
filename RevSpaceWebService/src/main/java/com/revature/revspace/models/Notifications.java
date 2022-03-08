@@ -2,6 +2,7 @@ package com.revature.revspace.models;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -88,6 +89,9 @@ public class Notifications {
 	public int getNotiId() {
 		return notiId;
 	}
+	
+	
+
 
 	@Override
 	public String toString() {
