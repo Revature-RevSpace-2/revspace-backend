@@ -1,8 +1,10 @@
 package com.revature.revspace.testutils;
 
 import com.revature.revspace.models.Credentials;
+import com.revature.revspace.models.Notifications;
 import com.revature.revspace.models.User;
 
+import java.time.LocalDate;
 import java.util.Random;
 
 public class ModelGenerators
@@ -91,5 +93,25 @@ public class ModelGenerators
 	{
 		String password = makeRandomAlphaString(64,64);
 		return new Credentials(makeRandomUser(), password);
+	}
+	
+	public static Notifications makeRandomNotifications()
+	{
+		Random ran = new Random();
+		int year = ran.nextInt(1990,2022);
+		int month = ran.nextInt(1,12);
+		int day = ran.nextInt(1,28);
+		String message = makeRandomAlphaString(2,20);
+		LocalDate dateAndTime = LocalDate.of(year,month,day);
+//		int userId = ran.nextInt(20);
+		
+//		LocalDate date = LocalDate.of(2017, 1, 13);
+//		date = date.atTime(RANDOM.nextInt() % 1000)*24*60*60*1000;
+		
+//		User user = makeRandomUser(userId);
+//		int userReceive = user.getUserId();
+		
+
+		return new Notifications(message, dateAndTime, 1);
 	}
 }

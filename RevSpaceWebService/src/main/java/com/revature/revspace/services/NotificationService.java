@@ -35,10 +35,10 @@ public class NotificationService {
 		return this.nRepo.findAll();
 	}
 	
-	public Notifications getNotificationById(String notiId) {
+	public Notifications getNotificationById(int notiId) {
 		// TODO Auto-generated method stub
 		List<Notifications> nList = this.nRepo.findAll();
-		int notificationId = Integer.parseInt(notiId);
+		int notificationId = notiId;
 		for (Notifications noti: nList) {
 			if (noti.getNotiId() == notificationId) {
 				return noti;
