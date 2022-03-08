@@ -2,6 +2,7 @@ package com.revature.revspace.models;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -13,6 +14,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 
 
 @Entity
@@ -27,6 +34,9 @@ public class Notifications {
 	@Column(name = "message")
 	private String message;
 	
+//	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "MM/dd/yyyy")
+//	@JsonDeserialize(using = LocalDateDeserializer.class)
+//	@JsonSerialize(using = LocalDateSerializer.class)
 	@Column(name = "dateAndTime")
 	private LocalDate dateAndTime;
 	
@@ -82,6 +92,9 @@ public class Notifications {
 	public int getNotiId() {
 		return notiId;
 	}
+	
+	
+
 
 	@Override
 	public String toString() {
