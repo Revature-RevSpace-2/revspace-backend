@@ -112,21 +112,23 @@ public class PostServiceTests {
 
     @Test
     void pullPostsListZero(){
+    	User user = new User(1,"email@revature.net","firstname", "lastname", 12332254L, 1232222L,"username","title", "location", "aboutme");
         sortedRelatedComments = ps.selectedRelatedComments(parentPost1, allComments);
         Mockito.when(pr.findByCommentFalseOrderByDateDesc()).thenReturn(postList);
         Mockito.when(pr.findByCommentTrueOrderByDateAsc()).thenReturn(allComments);
         Mockito.when(lr.findAll()).thenReturn(likeList);
-        List<List<Post>> actual = ps.pullPostsList(0);
+        List<List<Post>> actual = ps.pullPostsList(0, user);
 
         Assertions.assertNotNull(actual);
     }
 
     @Test
     void pullPostsListNotZero(){
+    	User user = new User(1,"email@revature.net","firstname", "lastname", 12332254L, 1232222L,"username","title", "location", "aboutme");
         Mockito.when(pr.findByCommentFalseOrderByDateDesc()).thenReturn(postList);
         Mockito.when(pr.findByCommentTrueOrderByDateAsc()).thenReturn(allComments);
         Mockito.when(lr.findAll()).thenReturn(likeList);
-        List<List<Post>> actual = ps.pullPostsList(10);
+        List<List<Post>> actual = ps.pullPostsList(10, user);
         List<List<Post>> expected = new ArrayList<>();
         List<Post> list = new ArrayList<>();
         expected.add(list);

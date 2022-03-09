@@ -19,7 +19,7 @@ import java.util.List;
 
 @RestController
 public class PostController {
-	@Autowired
+	@Autowired 
 	PostService pos;
 	@Autowired
 	UserService us;
@@ -33,28 +33,28 @@ public class PostController {
 		return new ResponseEntity<>(tempPost, HttpStatus.OK);
 	}
 
-	@GetMapping("/follow/posts/{uId}")
-	public ResponseEntity<List<List<Post>>> getNextTenFolow(@PathVariable(name = "uId") String uId) {
-		int userId = 0;
-		try {
-			userId = Integer.parseInt(uId);
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
-		}
-		User loggedUser = us.get(userId);
-		List<List<Post>> response = new ArrayList<>();
-		if (loggedUser != null) {
-			response = pos.pullPostsListFollowing(loggedUser);
-
-		} else {
-			return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-		}
-		if (!response.isEmpty()) {
-			return new ResponseEntity<>(response, HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
-		}
-	}
+//    @GetMapping("/follow/posts/{uId}")
+//    public ResponseEntity<List<List<Post>>> getNextTenFolow (@PathVariable(name="uId") String uId){
+//        int userId = 0;
+//        try {
+//            userId = Integer.parseInt(uId);
+//        } catch (NumberFormatException e){
+//            e.printStackTrace();
+//        }
+//        User loggedUser = us.get(userId);
+//        List<List<Post>> response = new ArrayList<>();
+//        if(loggedUser != null){
+//            response = pos.pullPostsListFollowing(loggedUser);
+//          
+//        }else {
+//            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+//        }
+//        if(!response.isEmpty()){
+//            return new ResponseEntity<>(response, HttpStatus.OK);
+//        }else {
+//            return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+//        }
+//    }
 
 	// Get Post By ID
 	@GetMapping("/posts/{id}")
@@ -103,8 +103,6 @@ public class PostController {
 		}
 	}
 
-	
-
 	// Update Post By ID
 	@PutMapping(value = "/posts", consumes = "application/json", produces = "application/json")
 	public Post updatePost(@RequestBody Post newPost) {
@@ -126,3 +124,6 @@ public class PostController {
 		return pos.delete(safeId);
 	}
 }
+
+
+
