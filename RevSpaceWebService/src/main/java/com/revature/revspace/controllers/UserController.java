@@ -117,10 +117,9 @@ public class UserController
             }
         }
         lfUser.add(followUser);
-        loggedUser.setFollowing(lfUser);
-        followUser.getFollowers().add(loggedUser);        
+        
+        loggedUser.setFollowing(lfUser);      
         resultUser = us.update(loggedUser);
-        us.update(followUser);
         if (resultUser == null || followUser == null)
         {
             throw new ResponseStatusException
@@ -129,6 +128,7 @@ public class UserController
                     );
         }
         return resultUser;
+
     }
 
     @PutMapping(value = "/users/{id}", consumes = "application/json")
