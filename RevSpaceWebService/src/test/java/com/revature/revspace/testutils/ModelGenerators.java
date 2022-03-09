@@ -95,14 +95,14 @@ public class ModelGenerators
 		return new Credentials(makeRandomUser(), password);
 	}
 	
-	public static Notifications makeRandomNotifications()
-	{
-		Random ran = new Random();
-		int year = ran.nextInt(1990,2022);
-		int month = ran.nextInt(1,12);
-		int day = ran.nextInt(1,28);
-		String message = makeRandomAlphaString(2,20);
-		LocalDate dateAndTime = LocalDate.of(year,month,day);
+//	public static Notifications makeRandomNotifications()
+//	{
+//		Random ran = new Random();
+//		int year = ran.nextInt(1990,2022);
+//		int month = ran.nextInt(1,12);
+//		int day = ran.nextInt(1,28);
+//		String message = makeRandomAlphaString(2,20);
+//		LocalDate dateAndTime = LocalDate.of(year,month,day);
 //		int userId = ran.nextInt(20);
 		
 //		LocalDate date = LocalDate.of(2017, 1, 13);
@@ -112,6 +112,6 @@ public class ModelGenerators
 //		int userReceive = user.getUserId();
 		
 
-		return new Notifications(message, dateAndTime, 1);
-	}
+//		return new Notifications(message, dateAndTime, 1);
+//	}
 }
