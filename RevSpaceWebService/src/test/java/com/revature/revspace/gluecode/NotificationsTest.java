@@ -26,20 +26,21 @@ public class NotificationsTest {
 	@Given("user on the post feed page")
 	public void user_on_the_post_feed_page() {
 		lp = new LoginPage(RevspaceUtilityDriver.driver);
-        this.nfp = new NotificationFeedPage(RevspaceUtilityDriver.driver);
-        WebDriverWait wait = new WebDriverWait(RevspaceUtilityDriver.driver, 5);
-        wait.until(ExpectedConditions.urlMatches("/"));
-        this.email="test4250580@gmail.com";
-        this.password="Test123$";
-        this.lp.login(this.email, this.password);
-
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[text()='Post Feed']")));
-        assertEquals("Post Feed", RevspaceUtilityDriver.driver.findElement(By.xpath("//a[text()='Post Feed']")).getText());
+		this.nfp = new NotificationFeedPage(RevspaceUtilityDriver.driver);
+		WebDriverWait wait = new WebDriverWait(RevspaceUtilityDriver.driver, 5);
+		wait.until(ExpectedConditions.urlMatches("/"));
+		this.email="test4250580@gmail.com";
+		this.password="Test123$";
+		this.lp.login(this.email, this.password);
+		
+		
 	}
 
 	@Given("another users comment is visible on the page")
 	public void another_users_comment_is_visible_on_the_page() {
-	    
+		WebDriverWait wait = new WebDriverWait(RevspaceUtilityDriver.driver, 5);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[text()='Post Feed']")));
+		assertEquals("Post Feed", RevspaceUtilityDriver.driver.findElement(By.xpath("//a[text()='Post Feed']")).getText());
 	}
 	@Then("the current user has the option to like or comment on the visible feed")
 	public void the_current_user_has_the_option_to_like_or_comment_on_the_visible_feed() {
@@ -47,11 +48,11 @@ public class NotificationsTest {
 	}
 	@Given("the current user selects like on the first visible post")
 	public void the_current_user_selects_like_on_the_first_visible_post() {
-	    
+	    //nfp.likeNotification();
 	}
 	@Given("the user clicks the like highlighted button")
 	public void the_user_clicks_the_like_highlighted_button() {
-	    this.nfp.likeNotification();
+	    
 	}
 	@Then("the user owner of the post should receive a notification of the like")
 	public void the_user_owner_of_the_post_should_receive_a_notification_of_the_like() {

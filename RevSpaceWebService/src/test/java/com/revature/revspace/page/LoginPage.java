@@ -20,6 +20,7 @@ public class LoginPage {
 		PageFactory.initElements(driver, this);
 	}
 	
+	
 	public void login(String email, String password) {
 		System.out.println(email);
 		this.email.clear();
