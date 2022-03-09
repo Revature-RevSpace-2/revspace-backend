@@ -17,7 +17,7 @@ public class NotificationFeedPage {
 //	private WebElement userReceive;
 //	// /html/body/app-root/body/app-post-feed/app-populate-feed/div[1]/div/div/div/div[1]/div[1]/div/div/span[1]/p
 //	
-	@FindBy (xpath="//span[@class='postButton']")
+	@FindBy (xpath="//a[@class='postButton']")
 	private WebElement postButtonLike;
 	// /html/body/app-root/body/app-post-feed/app-populate-feed/div[1]/div/div/div/div[1]/div[3]/span[1]
 	
@@ -34,6 +34,7 @@ public class NotificationFeedPage {
 	public NotificationFeedPage (WebDriver driver) {
 		PageFactory.initElements(driver, this);
 	}
+	
 	
 	
 	public void likeNotification() {
