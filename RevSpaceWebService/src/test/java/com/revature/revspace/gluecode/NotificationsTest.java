@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.example.gluecode.WildCardUtilityDriver;
 import com.revature.revspace.page.LoginPage;
 import com.revature.revspace.page.NotificationFeedPage;
 
@@ -24,16 +25,16 @@ public class NotificationsTest {
 	
 	@Given("user on the post feed page")
 	public void user_on_the_post_feed_page() {
-		System.out.println("I am inside post feed page");
-		this.nfp = new NotificationFeedPage(RevspaceUtilityDriver.driver);
-		WebDriverWait wait = new WebDriverWait(RevspaceUtilityDriver.driver, 5);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@id='login']")));
-		this.email="test4250580@gmail.com";
-		this.password="Test123$";
-		this.lp.login(this.email, this.password);
-		
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[text()='Post Feed']")));
-		assertEquals("Post Feed", RevspaceUtilityDriver.driver.findElement(By.xpath("//a[text()='Post Feed']")).getText());
+		lp = new LoginPage(RevspaceUtilityDriver.driver);
+        this.nfp = new NotificationFeedPage(RevspaceUtilityDriver.driver);
+        WebDriverWait wait = new WebDriverWait(RevspaceUtilityDriver.driver, 5);
+        wait.until(ExpectedConditions.urlMatches("/"));
+        this.email="test4250580@gmail.com";
+        this.password="Test123$";
+        this.lp.login(this.email, this.password);
+
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[text()='Post Feed']")));
+        assertEquals("Post Feed", RevspaceUtilityDriver.driver.findElement(By.xpath("//a[text()='Post Feed']")).getText());
 	}
 
 	@Given("another users comment is visible on the page")
@@ -60,7 +61,9 @@ public class NotificationsTest {
 	
 	@Given("the current user selects comment on the first visible post")
 	public void the_current_user_selects_comment_on_the_first_visible_post() {
-	    
+		 assertEquals("http://localhost:4200/postfeed", RevspaceUtilityDriver.driver.getCurrentUrl()); 
+		 WebDriverWait wait = new WebDriverWait(RevspaceUtilityDriver.driver, 5);
+	        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/app-root/body/app-post-feed/app-populate-feed/div[1]/div/div/div/div[1]/div[4]/div[2]/div[1]/div/small")));
 	}
 	@Given("the user click the like highlighted comments button")
 	public void the_user_click_the_like_highlighted_comments_button() {
