@@ -14,7 +14,7 @@ public static WebDriver driver;
 	public void setUp() {
 		System.setProperty("webdriver.chrome.driver","src/test/resources/chromedriver");
 		driver = new ChromeDriver();
-		driver.get("http://localhost:4200/login");
+		driver.get("http://localhost:4200");
 		
 	}
 	@After

@@ -98,9 +98,9 @@ public class ModelGenerators
 	public static Notifications makeRandomNotifications()
 	{
 		Random ran = new Random();
-		int year = ran.nextInt(1990,2022);
-		int month = ran.nextInt(1,12);
-		int day = ran.nextInt(1,28);
+		int year = ran.nextInt(1990);
+		int month = ran.nextInt(1);
+		int day = ran.nextInt(1);
 		String message = makeRandomAlphaString(2,20);
 		LocalDate dateAndTime = LocalDate.of(year,month,day);
 //		int userId = ran.nextInt(20);
