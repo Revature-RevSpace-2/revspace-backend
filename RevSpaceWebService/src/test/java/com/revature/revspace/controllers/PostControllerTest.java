@@ -88,7 +88,7 @@ public class PostControllerTest {
 
     @Test
     @WithMockUser(username=TEST_EMAIL)
-    void getPostById() throws Exception
+    void getPostById() throws Exception 
     {
 
         User user = new User(1,"abc@email.com", "name","name", 8708779L, 234243234L, "git", "title", "location", "aboutme");

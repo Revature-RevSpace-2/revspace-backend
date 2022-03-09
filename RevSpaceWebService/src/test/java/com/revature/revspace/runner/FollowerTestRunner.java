@@ -7,7 +7,10 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		features={"feature/UserLogin.feature"},
+//		features={"feature/UserLogin.feature"},
+//		glue = {"com.revature.revspace.gluecode"}		
+		
+		features={"feature/Follow.feature"},
 		glue = {"com.revature.revspace.gluecode"}		
 		)
 

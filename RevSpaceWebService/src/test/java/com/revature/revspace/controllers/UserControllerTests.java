@@ -63,7 +63,7 @@ public class UserControllerTests {
 	}
 
 	@Test
-	void getUserDoesntGetUserIfUnauthorized() throws Exception {
+	void getUserDoesntGetUserIfUnauthorized() throws Exception { 
 		int id = 1;
 		User user = ModelGenerators.makeRandomUser(1);
 
