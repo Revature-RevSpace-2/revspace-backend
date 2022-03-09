@@ -13,8 +13,7 @@ public class FollowPage {
 	@FindBy(xpath="//span[text()='Follow']")
 	private WebElement follow;
 	
-	
-	
+		
 	private WebDriver driver;
 	
 	public FollowPage(WebDriver driver) {
@@ -22,11 +21,6 @@ public class FollowPage {
 		this.driver = driver;
 	}
 	
-	
-	
-	
-	
-	
-	
+
 
 }

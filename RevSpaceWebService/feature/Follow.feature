@@ -1,8 +1,8 @@
 Feature: A user can follow another user
 
 Background: A User is on the login page
-		Given the User is logged in on the login page
-		And the User inputs "nickmontyando@gmail.com" into the username field
+		Given the User is on the login page
+		When the User inputs "nickmontyando@gmail.com" into the username field
 		And the User Owner inputs "myPass" into the password field
 		And the User Owner clicks login
 		Then the User is directed to the postfeed page

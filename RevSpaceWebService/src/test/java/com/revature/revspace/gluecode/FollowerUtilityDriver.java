@@ -12,7 +12,7 @@ public class FollowerUtilityDriver {
 	
 	@Before
 	public void setUp() {
-		System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
+		System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.get("http://localhost:4200");
 	}
