@@ -6,7 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.example.gluecode.WildCardUtilityDriver;
+
 import com.revature.revspace.page.LoginPage;
 import com.revature.revspace.page.NotificationFeedPage;
 

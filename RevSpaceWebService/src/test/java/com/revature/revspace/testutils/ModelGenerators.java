@@ -93,6 +93,7 @@ public class ModelGenerators
 	{
 		String password = makeRandomAlphaString(64,64);
 		return new Credentials(makeRandomUser(), password);
+		
 	}
 	
 
