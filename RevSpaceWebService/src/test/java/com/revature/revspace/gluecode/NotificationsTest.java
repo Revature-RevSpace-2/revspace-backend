@@ -48,7 +48,7 @@ public class NotificationsTest {
 	}
 	@Given("the current user selects like on the first visible post")
 	public void the_current_user_selects_like_on_the_first_visible_post() {
-	    nfp.likeNotification();
+	    //nfp.likeNotification();
 	}
 	@Given("the user clicks the like highlighted button")
 	public void the_user_clicks_the_like_highlighted_button() {
