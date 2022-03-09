@@ -47,9 +47,16 @@ public class PostServiceImpl implements PostService {
     	return fullPostList;
     }
 
-    public List<List<Post>> pullPostsList(int lastPostIdOnThePage){
+    public List<List<Post>> pullPostsList(int lastPostIdOnThePage, User currentUser){
+    	
+    	List<Post> fullPostList = new ArrayList<>();
+    	User loggedUser = userRepo.get(currentUser.getUserId());
+    	fullPostList.addAll(this.postRepo.findByCreatorId(currentUser));
+    	for(User following : loggedUser.getFollowing()) {
+    		fullPostList.addAll(this.postRepo.findByCreatorId(following));
+    	}
 
-        List<Post> sortedCurrentPostsList = postRepo.findByCommentFalseOrderByDateDesc();
+        List<Post> sortedCurrentPostsList = fullPostList;
         List<Post> sortedCurrentCommentsList = postRepo.findByCommentTrueOrderByDateAsc();
         List<Like> currentLikesList = (List<Like>) likeRepo.findAll();
         List<Post> responsePostsList = new ArrayList<>();
