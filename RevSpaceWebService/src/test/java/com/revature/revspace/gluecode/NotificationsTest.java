@@ -6,7 +6,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.example.gluecode.WildCardUtilityDriver;
 import com.revature.revspace.page.LoginPage;
 import com.revature.revspace.page.NotificationFeedPage;
 
@@ -76,7 +75,7 @@ public class NotificationsTest {
 	}
 	@Given("clicks the submit button")
 	public void clicks_the_submit_button() {
-	   this.nfp.commentNotification(this.comment);
+	   //this.nfp.commentNotification(this.comment);
 	}
 	@Given("the new comment is posted to this comments thread")
 	public void the_new_comment_is_posted_to_this_comments_thread() {
